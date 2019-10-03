@@ -34,12 +34,16 @@ function startup() {
     lastMessageIndex = 0;
 
     // Load player names
-    $.getJSON( 'api/get_players.php', function( data ) {
-        $('#blueatk').html(data['blueatk']);
-        $('#bluedef').html(data['bluedef']);
-        $('#redatk').html(data['redatk']);
-        $('#reddef').html(data['reddef']);
-    });
+    // $.getJSON( 'api/get_players.php', function( data ) {
+    //     $('#blueatk').html("data['blueatk']");
+    //     $('#bluedef').html(data['bluedef']);
+    //     $('#redatk').html(data['redatk']);
+    //     $('#reddef').html(data['reddef']);
+    // });
+    $('#blueatk').html('Blue attacker')
+    $('#bluedef').html('Blue defender')
+    $('#redatk').html('Red attacker')
+    $('#reddef').html('Red defender')
 
     // Initialize buttons
     $("#scoredBlue").click(increaseScoreBlue);
