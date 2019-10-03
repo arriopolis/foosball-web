@@ -131,7 +131,7 @@ function updateScore() {
     $('#scorered').html(redScore);
 
 
-    if ((blueScore >= 10 || redScore >= 10) && Math.abs(blueScore - redScore) >= 2) {
+    if (blueScore >= 5 || redScore >= 5) {
         endgame();
     }
 }
@@ -194,23 +194,23 @@ function decreaseScoreRed() {
 }
 
 function endgame() {
-    showMessage("Uploading result in 5 seconds...", 5000);
+    showMessage("Game done! Resetting system in 5 seconds...", 5000);
     setTimeout(function() {
         // Check if the user did not change the score back!
-        if ((blueScore < 10 && redScore < 10) || Math.abs(blueScore - redScore) < 2) {
-            showMessage("Upload cancelled!", 1000);
+        if (blueScore < 5 && redScore < 5) {
+            showMessage("Reset cancelled!", 1000);
         } else {
-            showMessage("Uploading...", 0);
-            var dateE = new Date();
-            var end_time = dateE.getTime();
-            var result = {};
-            result["type"] = "quickmatch";
-            result["players"] = [$('#bluedef').html(), $('#blueatk').html(), $('#redatk').html(), $('#reddef').html()];
-            result["results"] = [blueScore, redScore];
-            result["start"] = Math.floor(start_time/1000);// time in SECONDS
-            result["end"] = Math.floor(end_time/1000);// time in SECONDS
-            var res = $.ajax('api/set_result.php',{ data: JSON.stringify(result),
-                contentType : 'application/json', type:'POST', async: false});
+            showMessage("Resetting...", 0);
+            // var dateE = new Date();
+            // var end_time = dateE.getTime();
+            // var result = {};
+            // result["type"] = "quickmatch";
+            // result["players"] = [$('#bluedef').html(), $('#blueatk').html(), $('#redatk').html(), $('#reddef').html()];
+            // result["results"] = [blueScore, redScore];
+            // result["start"] = Math.floor(start_time/1000);// time in SECONDS
+            // result["end"] = Math.floor(end_time/1000);// time in SECONDS
+            // var res = $.ajax('api/set_result.php',{ data: JSON.stringify(result),
+            //     contentType : 'application/json', type:'POST', async: false});
             setTimeout(function() {
                 window.location.href="index.html";
             }, 1000);
