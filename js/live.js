@@ -216,7 +216,11 @@ function endgame() {
             // var res = $.ajax('api/set_result.php',{ data: JSON.stringify(result),
             //     contentType : 'application/json', type:'POST', async: false});
             setTimeout(function() {
-                window.location.href="index.html";
+                blueScore = 0;
+                redScore = 0;
+                updateScore();
+                showMessage("Ready for a new game!");
+                sounds.ballreset.play();
             }, 1000);
         }
     }, 5000);
